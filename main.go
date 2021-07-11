@@ -3,7 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/iwanhae/kubenchctl/pkg/tools/network_client"
+	"github.com/iwanhae/kubenchctl/pkg/tools/network_client_bandwidth"
+	"github.com/iwanhae/kubenchctl/pkg/tools/network_client_tps"
 	"github.com/iwanhae/kubenchctl/pkg/tools/network_server"
 	"github.com/spf13/cobra"
 )
@@ -24,6 +25,7 @@ func toolCMD() *cobra.Command {
 		Aliases: []string{"tools", "t"},
 	}
 	cmd.AddCommand(network_server.NetworkServerCMD())
-	cmd.AddCommand(network_client.NetworkClientCMD())
+	cmd.AddCommand(network_client_bandwidth.NetworkClientCMD())
+	cmd.AddCommand(network_client_tps.NetworkClientCMD())
 	return cmd
 }

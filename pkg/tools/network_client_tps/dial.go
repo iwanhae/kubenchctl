@@ -1,4 +1,4 @@
-package network_client
+package network_client_tps
 
 import (
 	"context"
@@ -8,12 +8,14 @@ import (
 	"time"
 
 	"github.com/iwanhae/kubenchctl/pkg/types"
-	"github.com/valyala/fasthttp"
 )
 
 var (
-	defaultDialer       = &fasthttp.TCPDialer{Concurrency: 1000}
-	dnsCount      int32 = 0
+	defaultDial = (&net.Dialer{
+		Timeout:   30 * time.Second,
+		KeepAlive: 30 * time.Second,
+	}).Dial
+	dnsCount int32 = 0
 )
 
 func DefaultDialer(addr string) (net.Conn, error) {
@@ -46,7 +48,7 @@ func DefaultDialer(addr string) (net.Conn, error) {
 
 	addr = fmt.Sprintf("%s:%s", ip.String(), port)
 	t := time.Now()
-	net, err := defaultDialer.Dial(addr)
+	net, err := defaultDial("tcp4", addr)
 	tr.ConnectionEstablishDuration = time.Since(t)
 	if err != nil {
 		return nil, err

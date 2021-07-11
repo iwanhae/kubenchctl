@@ -12,6 +12,8 @@ type Kind string
 const (
 	KindMessage     = "message"
 	KindServerStats = "server_stats"
+	KindHTTPReport  = "cluster_http_report"
+	KindTCPReport   = "cluster_tcp_report"
 )
 
 type format struct {

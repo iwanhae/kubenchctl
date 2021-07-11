@@ -19,13 +19,14 @@
             "program": "${workspaceFolder}/main.go",
             "args": [
                 "tool",
-                "client",
+                "cb",
                 "-c", 
                 "1",
                 "-r",
                 "10000000",
                 "--url",
-                "http://127.0.0.1:8080/1GB"
+                "http://127.0.0.1:8080/1GB",
+                "-k",
             ]
             
         }

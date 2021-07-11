@@ -7,14 +7,14 @@ import (
 
 type HTTPRequestReport struct {
 	Status   int           `json:"status"`
-	BodySize int           `json:"body_size"`
+	BodySize int64         `json:"body_size"`
 	Duration time.Duration `json:"duration"`
 }
 
 func (m HTTPRequestReport) Print() {
 	b, _ := json.Marshal(
 		format{
-			Kind: KindMessage,
+			Kind: KindHTTPReport,
 			Time: time.Now(),
 			Data: m,
 		})
@@ -29,7 +29,7 @@ type TCPRequestReport struct {
 func (m TCPRequestReport) Print() {
 	b, _ := json.Marshal(
 		format{
-			Kind: KindMessage,
+			Kind: KindTCPReport,
 			Time: time.Now(),
 			Data: m,
 		})
