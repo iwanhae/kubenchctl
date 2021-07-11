@@ -1,0 +1,33 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "netbench-server",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/cmd/netbench-server/."
+        },
+        {
+            "name": "netbench-client",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/main.go",
+            "args": [
+                "tool",
+                "client",
+                "-c", 
+                "1",
+                "-r",
+                "10000000",
+                "--url",
+                "http://127.0.0.1:8080/1GB"
+            ]
+            
+        }
+    ]
+}
