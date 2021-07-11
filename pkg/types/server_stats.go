@@ -16,7 +16,7 @@ type ServerStats struct {
 func (m ServerStats) Print() {
 	b, _ := json.Marshal(
 		format{
-			Kind: KindMessage,
+			Kind: KindServerStats,
 			Time: time.Now(),
 			Data: m,
 		})
